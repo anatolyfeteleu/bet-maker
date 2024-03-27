@@ -7,6 +7,6 @@ app = FastAPI(title="Bet Maker", debug=True)
 
 app.include_router(
     router=predictions_router,
-    prefix="/bets",
+    prefix="/api/bets",
 )
-app.include_router(router=events_router, prefix="/events")
+app.include_router(router=events_router, prefix="/api/events")

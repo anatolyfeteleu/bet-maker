@@ -38,17 +38,17 @@
     - `lose` проиграла (событие завершилось проигрышем первой команды или ничьей).
 
 ## 3. Endpoints
-- `GET  /bets/`
-```json
+- `GET  api/bets/`
+```bash
 curl -X 'GET' \
-  'http://0.0.0.0:8000/bets/' \
+  'http://0.0.0.0:8000/api/bets/' \
   -H 'accept: application/json'
 ```
 
-- `POST /bets/`
-```json
+- `POST api/bets/`
+```bash
 curl -X 'POST' \
-  'http://0.0.0.0:8000/bets/' \
+  'http://0.0.0.0:8000/api/bets/' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -58,17 +58,17 @@ curl -X 'POST' \
 }'
 ```
 
-- `GET /events/`
-```json
+- `GET api/events/`
+```bash
 curl -X 'GET' \
-  'http://0.0.0.0:8000/events/' \
+  'http://0.0.0.0:8000/api/events/' \
   -H 'accept: application/json'
 ```
 
-- `PUT  /events/{event_id}`
-```json
+- `PUT  api/events/{event_id}`
+```bash
 curl -X 'PUT' \
-  'http://0.0.0.0:8000/events/1' \
+  'http://0.0.0.0:8000/api/events/1' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
