@@ -1,0 +1,27 @@
+version: '3.8'
+
+volumes:
+  db:
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: _compose/db/Dockerfile
+    volumes:
+      - db:/var/lib/postgres/data
+    ports:
+      - '5454:5432'
+    env_file:
+      - _compose/env/db
+  app:
+    command: /start-app
+    build:
+      context: .
+      dockerfile: _compose/app/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - .:/app/code
+    ports:
+      - '8000:8000'
