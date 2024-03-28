@@ -15,7 +15,7 @@ class PredictionBetEnum(StrEnum):
     LOSE: str = "lose"
 
 
-EventPredictionBetResultMapper: str | None = defaultdict(
+EventPredictionBetResultMapper = defaultdict(
     lambda: None,
     **{
         EventResultEnum.WIN: PredictionBetEnum.WIN,

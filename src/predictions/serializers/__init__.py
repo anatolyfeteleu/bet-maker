@@ -1,8 +1,10 @@
 from datetime import datetime
+from decimal import Decimal
 
 from pydantic import BaseModel, ConfigDict
 
 from src.events.serializers import EventDetailSerializer
+from src.extensions.validators import PositiveDecimal
 from src.predictions.enums import PredictionBetEnum, PredictionStatusEnum
 
 
@@ -28,6 +30,6 @@ class PredictionDetailSerializer(PredictionBaseSerializer):
 
 
 class PredictionCreateSerializer(BaseModel):
-    amount: float
+    amount: PositiveDecimal
     event_id: int
     bet: PredictionBetEnum
