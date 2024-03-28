@@ -5,6 +5,10 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    HOST_PROTOCOL: str = "http"
+    HOST_ADDR: str = "0.0.0.0"
+    HOST_PORT: int = 8000
+
     DB_NAME: str
     DB_USERNAME: str
     DB_HOSTNAME: str

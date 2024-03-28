@@ -8,7 +8,7 @@ from src.events import serializers, services
 from src.events.enums import EventResultEnum
 from src.extensions.dependencies import get_async_session
 
-router = APIRouter()
+router = APIRouter(tags=["Events"])
 
 
 @router.get(
@@ -36,7 +36,9 @@ async def update_event(
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
     if event.result != EventResultEnum.PENDING:
-        raise HTTPException(status_code=403, detail="Event is already completed")
+        raise HTTPException(
+            status_code=403, detail="Event is already completed"
+        )
     return await services.update_event(
         session=session, event_id=event_id, data=data
     )

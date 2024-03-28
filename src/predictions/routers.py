@@ -9,7 +9,7 @@ from src.events.services import get_event
 from src.extensions.dependencies import get_async_session
 from src.predictions import serializers, services
 
-router = APIRouter()
+router = APIRouter(tags=["Bets"])
 
 
 @router.get(
@@ -36,5 +36,7 @@ async def place_a_bet(
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
     if event.result != EventResultEnum.PENDING:
-        raise HTTPException(status_code=403, detail="Event is already completed")
+        raise HTTPException(
+            status_code=403, detail="Event is already completed"
+        )
     return await services.place_a_prediction(session, bet)
