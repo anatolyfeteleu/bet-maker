@@ -1,7 +1,8 @@
 import uuid
+from decimal import Decimal
 from typing import TYPE_CHECKING
 
-from sqlalchemy import FLOAT, UUID, VARCHAR, ForeignKey
+from sqlalchemy import FLOAT, UUID, VARCHAR, ForeignKey, DECIMAL
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database import Base
@@ -37,8 +38,10 @@ class Prediction(BaseModelMixin, Base):
         default=PredictionStatusEnum.PENDING,
         info={"verbose_name": "Status"},
     )
-    amount: Mapped[float] = mapped_column(
-        FLOAT, nullable=False, info={"verbose_name": "Bet amount"}
+    amount: Mapped[Decimal] = mapped_column(
+        DECIMAL(8, 2),
+        nullable=False,
+        info={"verbose_name": "Bet amount"},
     )
 
     event: Mapped["Event"] = relationship(

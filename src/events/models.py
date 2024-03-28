@@ -8,7 +8,7 @@ from src.events.enums import EventResultEnum
 from src.extensions.models import BaseModelMixin
 
 if TYPE_CHECKING:
-    from predictions.models import Prediction
+    from src.predictions.models import Prediction
 
 
 class Event(BaseModelMixin, Base):
@@ -18,6 +18,7 @@ class Event(BaseModelMixin, Base):
         VARCHAR(10),
         nullable=False,
         default=EventResultEnum.PENDING,
+        server_default=EventResultEnum.PENDING,
         info={"verbose_name": "Result"},
     )
 
