@@ -147,3 +147,5 @@ _compose/env/db
 
 # VSCode
 .vscode
+
+migrations/sql_versions
